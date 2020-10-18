@@ -27,3 +27,5 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+# tv-shows-app
+App built with Vue.js, Vuex and covered by vue-test-utils
