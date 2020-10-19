@@ -47,6 +47,7 @@ describe("Filter Bar", () => {
   const data = () => {
     return {
       countries: availableCountries,
+      search: "",
       today: new Date(),
       visible: true
     };
@@ -65,5 +66,25 @@ describe("Filter Bar", () => {
 
     const filterBar = wrapper.find("div .filter-bar");
     expect(filterBar.exists()).toBe(true);
+  });
+
+  it("acts on genre change", async () => {
+    const mockMethod = jest.spyOn(FilterBar.methods, "onGenreChange");
+    const wrapper = wrapperFactory();
+
+    wrapper.vm.$refs.genres.$emit("genre", "Documentary");
+    await wrapper.vm.$nextTick();
+
+    expect(mockMethod).toHaveBeenCalled();
+  });
+
+  it("acts on search", async () => {
+    const mockMethod = jest.spyOn(FilterBar.methods, "onSearchChange");
+    const wrapper = wrapperFactory();
+
+    wrapper.vm.$refs.search.$emit("search", "all");
+    await wrapper.vm.$nextTick();
+
+    expect(mockMethod).toHaveBeenCalled();
   });
 });

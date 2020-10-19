@@ -26,11 +26,17 @@
     <b-collapse v-model="visible" id="collapse-1">
       <div class="filter-bar secondary-bar">
         <genres
+          ref="genres"
           :is-mobile="isMobile"
           :nav-bar-items="genres"
-          @genre="$emit('genre', $event)"
+          :selected-item="selectedGenre"
+          @genre="onGenreChange($event)"
         />
-        <search @search="$emit('search', $event)" />
+        <search
+          ref="search"
+          :search="search"
+          @search="onSearchChange($event)"
+        />
       </div>
     </b-collapse>
   </div>
@@ -57,6 +63,8 @@ export default {
   data() {
     return {
       countries: null,
+      search: "",
+      selectedGenre: null,
       today: new Date(),
       visible: true
     };
@@ -65,14 +73,38 @@ export default {
     ...mapGetters("shows", ["genres"]),
     ...mapState("shows", ["params"]),
     isMobile() {
-      return this.$vssWidth < 920;
+      return this.$vssWidth < 1024;
     }
   },
+  // watch: {
+  //   genres(val) {
+  //     if(this.genres.length > 0) {
+  //       this.selectedGenre = val[0];
+  //     }
+  //   }
+  // },
   beforeMount() {
     this.countries = availableCountries;
   },
+  mounted() {
+    if (this.genres.length > 0) {
+      this.selectedGenre = this.genres[0];
+    }
+  },
   methods: {
-    ...mapMutations("shows", ["setDate", "setCountry"])
+    ...mapMutations("shows", ["setDate", "setCountry"]),
+    onGenreChange(event) {
+      this.selectedGenre = event;
+      this.search = "";
+      this.$emit("genre", event);
+    },
+    onSearchChange(event) {
+      if (event !== "") {
+        this.selectedGenre = this.genres[0];
+      }
+      this.search = event;
+      this.$emit("search", event);
+    }
   }
 };
 </script>

@@ -5,7 +5,7 @@
         <li
           v-for="(item, i) in navBarItems"
           class="genre-item pointer"
-          :class="{ selected: item === selectedItem }"
+          :class="{ selected: item === selected }"
           :key="i"
           @click="select(item)"
         >
@@ -25,7 +25,7 @@
       <b-dropdown-item
         v-for="(item, i) in navBarItems"
         class="genre-item mobile"
-        :class="{ selected: item === selectedItem }"
+        :class="{ selected: item === selected }"
         :key="i"
         @click="select(item)"
       >
@@ -46,19 +46,26 @@ export default {
     isMobile: {
       type: Boolean,
       required: true
+    },
+    selectedItem: {
+      type: String
     }
   },
   data() {
     return {
-      selectedItem: null
+      selected: null
     };
   },
   mounted() {
-    this.selectedItem = this.navBarItems[0];
+    this.selected = this.selectedItem;
+  },
+  watch: {
+    selectedItem(val) {
+      this.selected = val;
+    }
   },
   methods: {
     select(item) {
-      this.selectedItem = item;
       this.$emit("genre", item);
     }
   }

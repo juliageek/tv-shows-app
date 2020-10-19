@@ -9,6 +9,9 @@ localVue.use(BootstrapVue);
 describe("Search", () => {
   function wrapperFactory() {
     return mount(Search, {
+      propsData: {
+        search: ""
+      },
       data: () => {
         return {
           searchInput: ""
@@ -27,7 +30,7 @@ describe("Search", () => {
 
   it("emits event on input", async () => {
     const wrapper = wrapperFactory();
-    wrapper.find(".search-input").trigger('input')
+    wrapper.find(".search-input").trigger("input");
 
     await wrapper.vm.$nextTick();
 

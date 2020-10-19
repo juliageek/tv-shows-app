@@ -9,6 +9,12 @@
 <script>
 export default {
   name: "Search",
+  props: {
+    search: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       searchInput: ""
@@ -17,7 +23,13 @@ export default {
   watch: {
     searchInput(val) {
       this.$emit("search", val);
+    },
+    search(val) {
+      this.searchInput = val;
     }
+  },
+  mounted() {
+    this.searchInput = this.search;
   }
 };
 </script>
@@ -33,7 +45,7 @@ export default {
   }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1024px) {
   .search-input {
     width: 90%;
   }

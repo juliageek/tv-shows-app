@@ -48,4 +48,4 @@ The code has 2 main "smart" components, **Shows.vue** and **FilterBar.vue**. The
 
 ## 4. Unit testing
 
-I used Jest and Vue test utils for unit testing the components. I aimed to test all the components, and by testing them, cover the Vuex store. I got a coverage of 95% (% of statements).
+I used Jest and Vue test utils for unit testing the components. I aimed to test all the components, and by testing them, cover the Vuex store. I got a coverage of 92% (of statements).
