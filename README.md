@@ -1,9 +1,9 @@
-# tv-shows-3
+# tv-shows-app
 
-[1. Project scripts](#1-project-scripts)
-[2. About the project](#2-about-the-project)
-[3. Component structure](#3-component-structure)
-[4. Unit testing](#4-unit-testing)
+- [1. Project scripts](#1-project-scripts)
+- [2. About the project](#2-about-the-project)
+- [3. Component structure](#3-component-structure)
+- [4. Unit testing](#4-unit-testing)
 
 ## 1.Project scripts
 ## Project setup
@@ -44,7 +44,7 @@ For the UI Component library, I chose to use Vue Bootstrap, because Vuetify seem
 
 ## 3. Component structure
 
-The code has 2 main "smart" components, "Shows.vue" and "FilterBar.vue". These 2 do all the heavy lifting in terms of communicating with the store (shows). The are also passing data down to their children. The children emit events back to them and the parents act on those events.
+The code has 2 main "smart" components, **Shows.vue** and **FilterBar.vue**. These 2 do all the heavy lifting in terms of communicating with the store (shows). The are also passing data down to their children. The children emit events back to them and the parents act on those events.
 
 ## 4. Unit testing
 
