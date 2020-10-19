@@ -48,6 +48,7 @@ describe("Filter Bar", () => {
     return {
       countries: availableCountries,
       search: "",
+      selectedGenre: "All",
       today: new Date(),
       visible: true
     };
@@ -68,6 +69,12 @@ describe("Filter Bar", () => {
     expect(filterBar.exists()).toBe(true);
   });
 
+  it("assigns selected genre when genres are not null", () => {
+    const wrapper = wrapperFactory();
+
+    expect(wrapper.vm.selectedGenre).toEqual("All");
+  });
+
   it("acts on genre change", async () => {
     const mockMethod = jest.spyOn(FilterBar.methods, "onGenreChange");
     const wrapper = wrapperFactory();
@@ -75,16 +82,19 @@ describe("Filter Bar", () => {
     wrapper.vm.$refs.genres.$emit("genre", "Documentary");
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.emitted().genre).toBeTruthy();
     expect(mockMethod).toHaveBeenCalled();
   });
 
   it("acts on search", async () => {
     const mockMethod = jest.spyOn(FilterBar.methods, "onSearchChange");
+
     const wrapper = wrapperFactory();
 
     wrapper.vm.$refs.search.$emit("search", "all");
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.emitted().search).toBeTruthy();
     expect(mockMethod).toHaveBeenCalled();
   });
 });

@@ -81,6 +81,12 @@ export default {
       if (this.genres.length > 0) {
         this.selectedGenre = val[0];
       }
+    },
+    selectedGenre(val) {
+      this.$emit("genre", val);
+    },
+    search(val) {
+      this.$emit("search", val);
     }
   },
   beforeMount() {
@@ -90,15 +96,12 @@ export default {
     ...mapMutations("shows", ["setDate", "setCountry"]),
     onGenreChange(event) {
       this.selectedGenre = event;
-      this.search = "";
-      this.$emit("genre", event);
     },
     onSearchChange(event) {
       if (event !== "") {
         this.selectedGenre = this.genres[0];
       }
       this.search = event;
-      this.$emit("search", event);
     }
   }
 };

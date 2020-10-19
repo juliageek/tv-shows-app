@@ -7,7 +7,7 @@ const localVue = createLocalVue();
 localVue.use(BootstrapVue);
 
 describe("Genres filter", () => {
-  const propsData = {
+  let propsData = {
     navBarItems: [
       "All",
       "Documentary",
@@ -21,9 +21,16 @@ describe("Genres filter", () => {
     isMobile: false
   };
 
+  const data = () => {
+    return {
+      selected: null
+    };
+  };
+
   const wrapperFactory = propsData => {
     return mount(Genres, {
       localVue,
+      data,
       propsData: {
         ...propsData
       }
@@ -71,6 +78,22 @@ describe("Genres filter", () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.emitted()).toBeTruthy();
+    });
+  });
+
+  describe("when the selected genre changes", () => {
+    it("updates internal property", async () => {
+      propsData = {
+        ...propsData,
+        selectedItem: "Documentary"
+      };
+      const wrapper = wrapperFactory(propsData);
+
+      wrapper.setProps({ selectedItem: "News" });
+
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.selected).toEqual("News");
     });
   });
 });
