@@ -1,7 +1,4 @@
 [{
-  "value": "DE",
-  "text": "Germany"
-}, {
   "value": "ES",
   "text": "Spain"
 }, {
@@ -16,7 +13,4 @@
 }, {
   "value": "NL",
   "text": "The Netherlands"
-}, {
-  "value": "RO",
-  "text": "Romania"
 }]

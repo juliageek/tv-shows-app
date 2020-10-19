@@ -49,13 +49,6 @@ export default {
   color: $white;
   border: none;
 
-  &:active,
-  &:focus {
-    border: 0;
-    outline: none;
-    box-shadow: none;
-  }
-
   button,
   label {
     color: $white;

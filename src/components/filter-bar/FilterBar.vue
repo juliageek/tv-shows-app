@@ -76,20 +76,15 @@ export default {
       return this.$vssWidth < 1024;
     }
   },
-  // watch: {
-  //   genres(val) {
-  //     if(this.genres.length > 0) {
-  //       this.selectedGenre = val[0];
-  //     }
-  //   }
-  // },
+  watch: {
+    genres(val) {
+      if (this.genres.length > 0) {
+        this.selectedGenre = val[0];
+      }
+    }
+  },
   beforeMount() {
     this.countries = availableCountries;
-  },
-  mounted() {
-    if (this.genres.length > 0) {
-      this.selectedGenre = this.genres[0];
-    }
   },
   methods: {
     ...mapMutations("shows", ["setDate", "setCountry"]),
