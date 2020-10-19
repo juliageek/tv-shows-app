@@ -1,34 +1,34 @@
-import { createLocalVue, mount } from '@vue/test-utils'
-import CountryFilter from '@/components/filter-bar/CountryFilter.vue'
-import availableCountries from '@/data/countries.json';
-import BootstrapVue from 'bootstrap-vue'
+import { createLocalVue, mount } from "@vue/test-utils";
+import CountryFilter from "@/components/filter-bar/CountryFilter.vue";
+import availableCountries from "@/data/countries.json";
+import BootstrapVue from "bootstrap-vue";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(BootstrapVue)
+localVue.use(BootstrapVue);
 
-describe('Country filter', () => {
+describe("Country filter", () => {
   function wrapperFactory() {
     return mount(CountryFilter, {
       localVue,
       propsData: {
-        selectedCountry: 'FR',
+        selectedCountry: "FR",
         countries: availableCountries
       }
     });
   }
 
-  it('renders', () => {
-    const wrapper = wrapperFactory()
-    expect(wrapper.find('countries-select')).toBeTruthy()
-  })
+  it("renders", () => {
+    const wrapper = wrapperFactory();
+    expect(wrapper.find("countries-select")).toBeTruthy();
+  });
 
-  it('emits event on click on another country', async () => {
-    const wrapper = wrapperFactory()
-    wrapper.findAll('select > option').at(1).element.selected = true;
+  it("emits event on click on another country", async () => {
+    const wrapper = wrapperFactory();
+    wrapper.findAll("select > option").at(1).element.selected = true;
 
-    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted()).toBeTruthy()
-  })
-})
+    expect(wrapper.emitted()).toBeTruthy();
+  });
+});

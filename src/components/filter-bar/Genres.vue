@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      class="desktop-list"
-      v-if="!isMobile"
-    >
+    <div class="desktop-list" v-if="!isMobile">
       <ul>
         <li
           v-for="(item, i) in navBarItems"
@@ -12,7 +9,7 @@
           :key="i"
           @click="select(item)"
         >
-          {{item}}
+          {{ item }}
         </li>
       </ul>
     </div>
@@ -35,12 +32,12 @@
         {{ item }}
       </b-dropdown-item>
     </b-dropdown>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Genres',
+  name: "Genres",
   props: {
     navBarItems: {
       type: Array,
@@ -54,7 +51,7 @@ export default {
   data() {
     return {
       selectedItem: null
-    }
+    };
   },
   mounted() {
     this.selectedItem = this.navBarItems[0];
@@ -62,10 +59,10 @@ export default {
   methods: {
     select(item) {
       this.selectedItem = item;
-      this.$emit('genre', item);
+      this.$emit("genre", item);
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -97,7 +94,8 @@ export default {
   background-color: transparent;
   border: none;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: none;
   }
 
@@ -110,9 +108,10 @@ export default {
   &:hover {
     color: $primary;
   }
-  
+
   &.mobile {
-    &:active, &:focus {
+    &:active,
+    &:focus {
       background-color: $primary-100;
     }
 

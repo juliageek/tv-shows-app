@@ -2,7 +2,7 @@
   <div>
     <div class="filter-bar">
       <div class="primary-filters">
-        <country-filter 
+        <country-filter
           :countries="countries"
           :selected-country="this.params.country"
           @country="setCountry($event)"
@@ -19,14 +19,11 @@
         :class="visible ? 'not-collapsed' : 'collapsed'"
         @click="visible = !visible"
       >
-        <i class="fas fa-chevron-down when-closed"/>
-        <i class="fas fa-chevron-up when-open"/>
+        <i class="fas fa-chevron-down when-closed" />
+        <i class="fas fa-chevron-up when-open" />
       </span>
     </div>
-    <b-collapse
-      v-model="visible"
-      id="collapse-1"
-    >
+    <b-collapse v-model="visible" id="collapse-1">
       <div class="filter-bar secondary-bar">
         <genres
           :is-mobile="isMobile"
@@ -40,16 +37,16 @@
 </template>
 
 <script>
-import availableCountries from '@/data/countries.json';
-import CountryFilter from './CountryFilter.vue';
-import DatePicker from './DatePicker.vue';
-import Genres from './Genres.vue';
-import Search from './Search.vue';
-import VueScreenSize from 'vue-screen-size';
-import { mapGetters, mapMutations, mapState } from 'vuex';
+import availableCountries from "@/data/countries.json";
+import CountryFilter from "./CountryFilter.vue";
+import DatePicker from "./DatePicker.vue";
+import Genres from "./Genres.vue";
+import Search from "./Search.vue";
+import VueScreenSize from "vue-screen-size";
+import { mapGetters, mapMutations, mapState } from "vuex";
 
 export default {
-  name: 'FilterBar',
+  name: "FilterBar",
   components: {
     countryFilter: CountryFilter,
     datePicker: DatePicker,
@@ -62,29 +59,22 @@ export default {
       countries: null,
       today: new Date(),
       visible: true
-    }
+    };
   },
   computed: {
-    ...mapGetters('shows', [
-      'genres',
-    ]),
-    ...mapState('shows', [
-      'params',
-    ]),
+    ...mapGetters("shows", ["genres"]),
+    ...mapState("shows", ["params"]),
     isMobile() {
       return this.$vssWidth < 920;
-    },
+    }
   },
   beforeMount() {
     this.countries = availableCountries;
   },
   methods: {
-    ...mapMutations('shows', [
-      'setDate',
-      'setCountry'
-    ]),
+    ...mapMutations("shows", ["setDate", "setCountry"])
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -99,12 +89,15 @@ export default {
   display: none;
 }
 
-.when-open, .when-closed {
+.when-open,
+.when-closed {
   color: $white;
 }
 
 .expand-span {
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     border: none;
     outline: none;
   }

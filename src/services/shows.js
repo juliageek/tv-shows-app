@@ -1,14 +1,14 @@
-import httpClient from './httpClient';
-import axios from 'axios';
+import httpClient from "./httpClient";
+import axios from "axios";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 const cancelTokens = {
   getSchedule: null,
-  getAllShows: null,
-}
+  getAllShows: null
+};
 
-const END_POINT = '/schedule';
+const END_POINT = "/schedule";
 
 const getSchedule = async (country, date) => {
   const url = `${END_POINT}?country=${country}&date=${date}`;
@@ -25,8 +25,6 @@ const getSchedule = async (country, date) => {
   } catch (err) {
     return `Error ${err.response.data.status}: ${err.response.data.message}`;
   }
-}
+};
 
-export {
-  getSchedule,
-}
+export { getSchedule };

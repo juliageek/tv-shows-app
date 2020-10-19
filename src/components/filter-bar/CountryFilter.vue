@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'CountryFilter',
+  name: "CountryFilter",
   props: {
     countries: {
       type: Array,
@@ -22,10 +22,10 @@ export default {
   },
   data() {
     return {
-      value: this.selectedCountry,
-    }
-  },
-}
+      value: this.selectedCountry
+    };
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -36,7 +36,8 @@ export default {
   color: $white;
   border: none;
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     outline: none;
     border: 0;
     box-shadow: none;

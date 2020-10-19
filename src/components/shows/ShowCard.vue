@@ -10,14 +10,11 @@
       class="card-img-top card-image"
       :src="show.image.medium"
       alt="Card image cap"
-    >
-    <img 
-      v-else
-      :src="`https://via.placeholder.com/210x295?text=No+image`"
-    >
+    />
+    <img v-else :src="`https://via.placeholder.com/210x295?text=No+image`" />
     <div class="card-body p-3">
       <h5 class="card-title text-16 text-left">{{ show.name }}</h5>
-      <div class=card-text>
+      <div class="card-text">
         <span class="text-16">
           {{ show.network.name }}
         </span>
@@ -31,14 +28,14 @@
 
 <script>
 export default {
-  name: 'ShowCard',
+  name: "ShowCard",
   props: {
     show: {
       type: Object,
-      required: true,
+      required: true
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss">
@@ -50,13 +47,8 @@ export default {
   transition: scale 0.25s ease 0s;
 
   img {
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    border: 0;
-  }
-
-  img:hover {
-    border: 0;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
   }
 }
 
@@ -64,7 +56,8 @@ export default {
   transform: scale(1.02);
 }
 
-.card:focus, .card:active {
+.card:focus,
+.card:active {
   border-color: transparent;
   outline: none;
 }
@@ -81,4 +74,3 @@ export default {
   justify-content: space-between;
 }
 </style>
-

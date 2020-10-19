@@ -179,16 +179,7 @@
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L124'></a><a href='#L124'>124</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,15 +246,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,7 +306,7 @@
   &lt;div&gt;
     &lt;div class="filter-bar"&gt;
       &lt;div class="primary-filters"&gt;
-        &lt;country-filter 
+        &lt;country-filter
           :countries="countries"
           :selected-country="this.params.country"
           @country="setCountry($event)"
@@ -335,14 +323,11 @@
         :class="visible ? 'not-collapsed' : 'collapsed'"
         @click="visible = !visible"
       &gt;
-        &lt;i class="fas fa-chevron-down when-closed"/&gt;
-        &lt;i class="fas fa-chevron-up when-open"/&gt;
+        &lt;i class="fas fa-chevron-down when-closed" /&gt;
+        &lt;i class="fas fa-chevron-up when-open" /&gt;
       &lt;/span&gt;
     &lt;/div&gt;
-    &lt;b-collapse
-      v-model="visible"
-      id="collapse-1"
-    &gt;
+    &lt;b-collapse v-model="visible" id="collapse-1"&gt;
       &lt;div class="filter-bar secondary-bar"&gt;
         &lt;genres
           :is-mobile="isMobile"
@@ -356,16 +341,16 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import availableCountries from '@/data/countries.json';
-import CountryFilter from './CountryFilter.vue';
-import DatePicker from './DatePicker.vue';
-import Genres from './Genres.vue';
-import Search from './Search.vue';
-import VueScreenSize from 'vue-screen-size';
-import { mapGetters, mapMutations, mapState } from 'vuex';
+import availableCountries from "@/data/countries.json";
+import CountryFilter from "./CountryFilter.vue";
+import DatePicker from "./DatePicker.vue";
+import Genres from "./Genres.vue";
+import Search from "./Search.vue";
+import VueScreenSize from "vue-screen-size";
+import { mapGetters, mapMutations, mapState } from "vuex";
 &nbsp;
 export default {
-  name: 'FilterBar',
+  name: "FilterBar",
   components: {
     countryFilter: CountryFilter,
     datePicker: DatePicker,
@@ -378,29 +363,22 @@ export default {
       countries: null,
       today: new Date(),
       visible: true
-    }
+    };
   },
   computed: {
-    ...mapGetters('shows', [
-      'genres',
-    ]),
-    ...mapState('shows', [
-      'params',
-    ]),
+    ...mapGetters("shows", ["genres"]),
+    ...mapState("shows", ["params"]),
     isMobile() {
       return this.$vssWidth &lt; 920;
-    },
+    }
   },
   beforeMount() {
     this.countries = availableCountries;
   },
   methods: {
-    ...mapMutations('shows', [
-      'setDate',
-      'setCountry'
-    ]),
+    ...mapMutations("shows", ["setDate", "setCountry"])
   }
-}
+};
 &lt;/script&gt;
 &nbsp;
 &lt;style lang="scss"&gt;
@@ -415,12 +393,15 @@ export default {
   display: none;
 }
 &nbsp;
-.when-open, .when-closed {
+.when-open,
+.when-closed {
   color: $white;
 }
 &nbsp;
 .expand-span {
-  &amp;:hover, &amp;:focus, &amp;:active {
+  &amp;:hover,
+  &amp;:focus,
+  &amp;:active {
     border: none;
     outline: none;
   }
@@ -443,14 +424,15 @@ export default {
     padding: 8px 12px 8px 2px;
   }
 }
-&lt;/style&gt;</pre></td></tr></table></pre>
+&lt;/style&gt;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Oct 18 2020 23:39:31 GMT+0200 (Central European Summer Time)
+                at Mon Oct 19 2020 07:48:20 GMT+0200 (Central European Summer Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

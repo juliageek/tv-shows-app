@@ -3,7 +3,7 @@
     <div class="title-container">
       <div class="title p-3">What's on TV?</div>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

@@ -1,36 +1,36 @@
-import { createLocalVue, mount } from '@vue/test-utils'
-import Search from '@/components/filter-bar/Search.vue'
-import BootstrapVue from 'bootstrap-vue'
+import { createLocalVue, mount } from "@vue/test-utils";
+import Search from "@/components/filter-bar/Search.vue";
+import BootstrapVue from "bootstrap-vue";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(BootstrapVue)
+localVue.use(BootstrapVue);
 
-describe('Search', () => {
+describe("Search", () => {
   function wrapperFactory() {
     return mount(Search, {
       data: () => {
         return {
-          searchInput: ''
-        }
+          searchInput: ""
+        };
       },
       localVue
     });
   }
 
-  it('renders', () => {
+  it("renders", () => {
     const wrapper = wrapperFactory();
 
-    const search = wrapper.find('.search-input');
-    expect(search.exists()).toBe(true)
-  })
+    const search = wrapper.find(".search-input");
+    expect(search.exists()).toBe(true);
+  });
 
-  it('emits event on input', async () => {
+  it("emits event on input", async () => {
     const wrapper = wrapperFactory();
-    const search = wrapper.find('.search-input').value = 'a';
+    wrapper.find(".search-input").trigger('input')
 
-    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted()).toBeTruthy()
-  })
-})
+    expect(wrapper.emitted()).toBeTruthy();
+  });
+});

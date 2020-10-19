@@ -18,27 +18,27 @@
 
 <script>
 export default {
-  name: 'DatePicker',
+  name: "DatePicker",
   props: {
     minDate: {
       type: Date,
-      required: true,
+      required: true
     },
     selectedDate: {
       type: String,
-      required: true,
+      required: true
     },
     isMobile: {
       type: Boolean,
       required: true
-    },
+    }
   },
   data() {
     return {
-      value: this.selectedDate,
-    }
-  },
-}
+      value: this.selectedDate
+    };
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -49,13 +49,15 @@ export default {
   color: $white;
   border: none;
 
-  &:active, &:focus {
+  &:active,
+  &:focus {
     border: 0;
     outline: none;
     box-shadow: none;
   }
 
-  button, label {
+  button,
+  label {
     color: $white;
   }
 }

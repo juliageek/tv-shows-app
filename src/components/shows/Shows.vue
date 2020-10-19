@@ -6,10 +6,7 @@
       @search="searchShows($event)"
     />
     <div class="shows">
-      <div
-        v-if="shows.length > 0"
-        class="cards-container"
-      >
+      <div v-if="shows.length > 0" class="cards-container">
         <show-card
           class="show-card"
           v-for="(show, i) in filteredShows"
@@ -19,19 +16,10 @@
           @show="selectedShow = $event"
         />
       </div>
-      <div
-        v-else
-        class="empty-container text-18"
-      >
+      <div v-else class="empty-container text-18">
         We couldn't find any shows for this country and date! :(
       </div>
-      <b-modal
-        id="myModal"
-        centered
-        hide-footer
-        hide-header
-        size="lg"
-      >
+      <b-modal id="myModal" centered hide-footer hide-header size="lg">
         <show-details :selected-show="selectedShow" />
       </b-modal>
     </div>
@@ -39,29 +27,26 @@
 </template>
 
 <script>
-import ShowCard from './ShowCard'
-import ShowDetails from './ShowDetails'
-import FilterBar from '@/components/filter-bar/FilterBar.vue'
-import { mapActions, mapState } from 'vuex'
+import ShowCard from "./ShowCard";
+import ShowDetails from "./ShowDetails";
+import FilterBar from "@/components/filter-bar/FilterBar.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
-  name: 'Shows',
+  name: "Shows",
   components: {
     filterBar: FilterBar,
     showCard: ShowCard,
     showDetails: ShowDetails
   },
   computed: {
-    ...mapState('shows', [
-      'shows',
-      'params',
-    ]),
+    ...mapState("shows", ["shows", "params"])
   },
   data() {
     return {
       filteredShows: [],
-      selectedShow: null,
-    }
+      selectedShow: null
+    };
   },
   watch: {
     params: {
@@ -80,30 +65,29 @@ export default {
     }
   },
   methods: {
-    ...mapActions('shows', [
-      'fetchShows',
-    ]),
+    ...mapActions("shows", ["fetchShows"]),
     filterShows(genre) {
       let filtered;
-      
-      if (genre === 'All') {
+
+      if (genre === "All") {
         filtered = this.shows;
       } else {
-        filtered = this.shows.filter((show) => show.type === genre);
+        filtered = this.shows.filter(show => show.type === genre);
       }
       this.filteredShows = filtered;
     },
     searchShows(search) {
-      this.filteredShows = this.shows.filter((show) => {
-        return show.name.toLowerCase().includes(search.toLowerCase())
-      })
+      this.filteredShows = this.shows.filter(show => {
+        return show.name.toLowerCase().includes(search.toLowerCase());
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-.cards-container, .empty-container {
+.cards-container,
+.empty-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

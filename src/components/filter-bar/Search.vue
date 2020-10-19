@@ -1,5 +1,5 @@
 <template>
-  <b-form-input 
+  <b-form-input
     v-model="searchInput"
     class="search-input"
     placeholder="Search for a show"
@@ -8,25 +8,26 @@
 
 <script>
 export default {
-  name: 'Search',
+  name: "Search",
   data() {
     return {
-      searchInput: '',
-    }
+      searchInput: ""
+    };
   },
   watch: {
     searchInput(val) {
-      this.$emit('search', val);
+      this.$emit("search", val);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 .search-input {
   width: 25%;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     border: none;
     box-shadow: 0 0 2px 4px $primary;
   }
